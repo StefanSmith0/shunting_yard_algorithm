@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+string command;
+bool stillRunning = true;
+
+Struct Student() {
+  char name[10];
+  int id;
+  float gpa;
+};
+
+int main() {
+  while (stillRunning == true) {
+    cout << "Command: ";
+    cin >> command;
+  }
+  return 0;
+}
