@@ -4,9 +4,10 @@
 
 using namespace std;
 
-void push(Node* &head, int newValue);
+void push(Node* &head, char newValue);
 void print(Node* current);
-Node* pop();
+char pop(Node* &head);
+void quit(Node* current);
 
 int main() {
   Node* head = NULL;
@@ -16,6 +17,7 @@ int main() {
     cout << "Enter command: ";
     cin.getline(input, 20);
     if(!strcmp(input, "quit")) {
+      quit(head);
       running = false;
     }
     else if(!strcmp(input, "print")) {
@@ -23,22 +25,40 @@ int main() {
       cout << endl;
     }
     else if(!strcmp(input, "push")) {
-      int intInput;
+      char charInput;
       cout << "Value to add to stack: ";
-      cin >> intInput;
-      push(head, intInput);
+      cin >> charInput;
+      push(head, charInput);
+      cin.ignore(10000,'\n');
+    }
+    else if(!strcmp(input, "pop")) {
+      char popValue = pop(head);
+      cout << "Value popped from stack: " << popValue << endl;
     }
   }
   return 0;
 }
 
-Node* pop(Node* &head) {
-  Node* returnNode = head;
-  head = head->getNext();
-  return returnNode;
+void quit(Node* current) {
+  if(current == NULL) {
+    return;
+  }
+  else if(current->getNext() != NULL) {
+    quit(current->getNext());
+  }
+  delete current;
+  current = NULL;
 }
 
-void push(Node* &head, int newValue) {
+char pop(Node* &head) {
+  char returnChar = head->getValue();
+  Node* afterHead = head->getNext();
+  delete head;
+  head = afterHead;
+  return returnChar;
+}
+
+void push(Node* &head, char newValue) {
   Node* newNode = new Node(newValue);
   Node* tempHead = head;
   head = newNode;

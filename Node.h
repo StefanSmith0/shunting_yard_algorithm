@@ -6,14 +6,14 @@ using namespace std;
 
 class Node {
 public:
-  Node(int);
+  Node(char);
   ~Node();
-  int getValue();
-  void setValue(int);
+  char getValue();
+  void setValue(char);
   Node* getNext();
   void setNext(Node*);
 private:
-  int value;
+  char value;
   Node* nextNode;
 };
 #endif

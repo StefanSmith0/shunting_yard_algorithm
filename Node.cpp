@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Node::Node(int newValue) {
+Node::Node(char newValue) {
   value = newValue;
   nextNode = NULL;
 }
@@ -12,11 +12,11 @@ Node::~Node() {
   cout << "Node destroyed." << endl;
 }
 
-int Node::getValue() {
+char Node::getValue() {
   return value;
 }
 
-void Node::setValue(int newValue) {
+void Node::setValue(char newValue) {
   value = newValue;
 }
 
