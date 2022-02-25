@@ -1,0 +1,39 @@
+#include <iostream>
+#include "Queue.h"
+
+using namspace std;
+
+Queue::Queue() {
+  size = 0;
+  head = NULL;
+  tail = NULL;
+}
+
+Queue::~Queue() {
+  destroy(head);
+}
+
+void Queue::destroy(data* current) {
+  if(current == NULL) {
+    return;
+  }
+  else if(current->nextData != NULL) {
+    destroy(current->nextData);
+  }
+  delete current;
+  current = NULL;
+}
+
+void Queue::enqueue(char newValue) {
+  data* newData = new data;
+  newData->value = newValue;
+  newData->prevData = NULL;
+  newData->nextData = NULL;
+  if(tail == NULL) {
+    head = newData;
+    tail = newData;
+  }
+  else {
+    tail->nextData
+  }
+}
