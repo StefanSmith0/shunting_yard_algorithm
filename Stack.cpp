@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Stack.h"
 
+
 using namespace std;
 
 Stack::Stack() {
@@ -49,4 +50,8 @@ char Stack::peek() {
     return '~';
   }
   return head->value;
+}
+
+int Stack::length() {
+  return size;
 }

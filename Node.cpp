@@ -5,7 +5,8 @@ using namespace std;
 
 Node::Node(char newValue) {
   value = newValue;
-  nextNode = NULL;
+  left = NULL;
+  right = NULL;
 }
 
 Node::~Node() {
@@ -20,10 +21,18 @@ void Node::setValue(char newValue) {
   value = newValue;
 }
 
-Node* Node::getNext() {
-  return nextNode;
+Node* Node::getLeft() {
+  return left;
 }
 
-void Node::setNext(Node* newNext) {
-  nextNode = newNext;
+void Node::setLeft(Node* newLeft) {
+  left = newLeft;
+}
+
+Node* Node::getRight() {
+  return right;
+}
+
+void Node::setRight(Node* newRight) {
+  right = newRight;
 }

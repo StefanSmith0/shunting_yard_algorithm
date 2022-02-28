@@ -1,0 +1,25 @@
+#include <iostream>
+#include "Tree.h"
+
+using namespace std;
+
+Tree::Tree() {
+  size = 0;
+  head = NULL;
+  root = NULL;
+}
+
+Tree::~Tree() {
+  destroy(head);
+}
+
+void Tree::push(Node* newNode, bool isLeft) {
+  if(head == NULL) {
+    head = newNode;
+    root = newNode;
+    return;
+  }
+  if(isLeft) {
+    cout << "swag" << endl;
+  }
+}

@@ -1,29 +1,28 @@
-#ifndef STACK_H
-#define STACK_H
+#ifndef QUEUE_H
+#define QUEUE_H
 #include <iostream>
-#include "Node.h"
 
 using namespace std;
 
-class Stack {
+class Queue {
   struct data;
  public:
-  Stack();
-  ~Stack();
+  Queue();
+  ~Queue();
   void destroy(data* current);
-  char pop();
-  void push(char newValue);
+  void enqueue(char newValue);
+  char dequeue();
   char peek();
-  int length();
-private:
-  
+  int size();
+ private:
   struct data {
     char value;
+    data* prevData;
     data* nextData;
   };
-  
   int size;
   data* head;
+  data* tail;
 };
 
 #endif

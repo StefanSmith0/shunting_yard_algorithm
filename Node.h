@@ -10,10 +10,13 @@ public:
   ~Node();
   char getValue();
   void setValue(char);
-  Node* getNext();
-  void setNext(Node*);
+  Node* getLeft();
+  void setLeft(Node*);
+  Node* getRight();
+  void setRight(Node*);
 private:
   char value;
-  Node* nextNode;
+  Node* left;
+  Node* right;
 };
 #endif

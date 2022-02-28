@@ -65,3 +65,7 @@ char Queue::peek() {
   }
   return head->value;
 }
+
+int Queue::length() {
+  return size;
+}

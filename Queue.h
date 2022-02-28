@@ -13,6 +13,7 @@ class Queue {
   void enqueue(char newValue);
   char dequeue();
   char peek();
+  int length();
  private:
   struct data {
     char value;
