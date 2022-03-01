@@ -15,24 +15,37 @@ Tree::~Tree() {
   destroy(head);
 }
 
-void Tree::push(char input[]) {
-  Stack* stack = new Stack();
-  for(int i; i < strlen(input); i++) {
-    if(input[i] > 47 && input[i] < 58) { //if it's an integer
-      stack->push(input[i]);
+void Tree::push(Node* newNode, bool headLeft) {
+  if(head = NULL) {
+    head = newNode;
+  }
+  else {
+    Node* tempHead = head;
+    head = newNode;
+    if(headLeft) {
+      newNode->setLeft(tempHead);
     }
     else {
-      Node* newNode = new Node(input[i]);
-      if(stack->pop() != '~') {
-	Node* newLeft = new Node(stack->pop());
-	newNode->setLeft(newLeft);
-      }
-      if(stack->pop() != '~') {
-	Node* newRight = new Node(stack->pop());
-	newNode->setRight(newRight);
-      }
+      newNode->setRight(tempHead);
     }
+    size++;
   }
+}
+
+void Tree::pushLeft(Node* newNode) {
+  if(head = NULL) {
+    return;
+  }
+  head->setLeft(newNode);
+  size++;
+}
+
+void Tree::pushRight(Node* newNode) {
+  if(head = NULL) {
+    return;
+  }
+  head->setRight(newNode);
+  size++;
 }
 
 void Tree::destroy(Node* current) {
@@ -47,4 +60,8 @@ void Tree::destroy(Node* current) {
   }
   delete current;
   current = NULL;
+}
+
+void Tree::print(int level) {
+  cout << "Print not developed yet" << endl;
 }

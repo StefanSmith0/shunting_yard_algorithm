@@ -33,7 +33,6 @@ void shuntYard(char* charArr) {
   Stack* stack = new Stack();
   Queue* queue = new Queue();
   for(int i; i < strlen(charArr); i++) {
-    cout << "Top of for loop: " << i << endl;
     if(charArr[i] > 47 && charArr[i] < 58) { //if it's an integer
       queue->enqueue(charArr[i]);
     }
@@ -44,21 +43,28 @@ void shuntYard(char* charArr) {
       stack->push(charArr[i]);
     }
   }
-  cout << "Size of Queue: " << queue->length() << endl;
   while(stack->peek() != '~') {
     queue->enqueue(stack->pop());
   }
-  cout << "Size of Queue: " << queue->length() << endl;
   char output[20];
   int i = 0;
   while(queue->peek() != '~') {
     output[i] = queue->dequeue();
     i++;
   }
-  cout << "Size of Queue: " << queue->length() << endl;
   delete stack;
   delete queue;
   strcpy(charArr, output);
+}
+
+void makeTree(char[] input) {
+  Stack* stack = new Stack();
+  for(int i; i < strlen(input); i++) {
+    Node* newNode = new Node(input[i]);
+    if(newNode->getValue() > 47 && newNode->getValue() < 58) { //int
+      stack->pushNode(newNode);
+    }
+  }
 }
 
 int precedence(char input) {

@@ -6,24 +6,19 @@
 using namespace std;
 
 class Stack {
-  struct data;
  public:
   Stack();
   ~Stack();
-  void destroy(data* current);
+  void destroy(Node* current);
   char pop();
   void push(char newValue);
   char peek();
+  Node* popNode();
+  void pushNode(Node* newNode);
   int length();
 private:
-  
-  struct data {
-    char value;
-    data* nextData;
-  };
-  
   int size;
-  data* head;
+  Node* head;
 };
 
 #endif
