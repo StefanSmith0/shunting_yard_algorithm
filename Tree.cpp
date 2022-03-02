@@ -15,19 +15,13 @@ Tree::~Tree() {
   destroy(head);
 }
 
-void Tree::push(Node* newNode, bool headLeft) {
+void Tree::push(Node* newNode) {
   if(head = NULL) {
     head = newNode;
   }
   else {
     Node* tempHead = head;
     head = newNode;
-    if(headLeft) {
-      newNode->setLeft(tempHead);
-    }
-    else {
-      newNode->setRight(tempHead);
-    }
     size++;
   }
 }

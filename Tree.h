@@ -9,7 +9,7 @@ class Tree {
 public:
   Tree();
   ~Tree();
-  void push(Node* newNode, bool headLeft);
+  void push(Node* newNode);
   void pushLeft(Node* newNode);
   void pushRight(Node* newNode);
   void print(int level);

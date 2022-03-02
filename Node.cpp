@@ -10,7 +10,6 @@ Node::Node(char newValue) {
 }
 
 Node::~Node() {
-  cout << "Node destroyed." << endl;
 }
 
 char Node::getValue() {

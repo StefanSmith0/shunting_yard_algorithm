@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Queue.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -13,57 +14,54 @@ Queue::~Queue() {
   destroy(head);
 }
 
-void Queue::destroy(data* current) {
+void Queue::destroy(Node* current) {
   if(current == NULL) {
     return;
   }
-  else if(current->nextData != NULL) {
-    destroy(current->nextData);
+  else if(current->getLeft() != NULL) {
+    destroy(current->getLeft());
   }
   delete current;
   current = NULL;
 }
 
-void Queue::enqueue(char newValue) {
-  data* newData = new data;
-  newData->value = newValue;
-  newData->prevData = NULL;
-  newData->nextData = NULL;
+void Queue::enqueue(Node* newNode) {
+  newNode->setLeft(NULL);
+  newNode->setRight(NULL);
   if(tail == NULL) {
-    head = newData;
-    tail = newData;
+    head = newNode;
+    tail = newNode;
   }
   else {
-    tail->nextData = newData;
-    newData->prevData = tail;
-    tail = newData;
+    tail->setRight(newNode);
+    newNode->setLeft(tail);
+    tail = newNode;
   }
   size++;
 }
 
-char Queue::dequeue() {
+Node* Queue::dequeue() {
   if(head == NULL) {
-    return '~';
+    return NULL;
   }
-  char returnChar = head->value;
-  data* afterHead = head->nextData;
-  delete head;
+  Node* returnNode = head;
+  Node* afterHead = head->getRight();
   if(afterHead == NULL) {
     tail = NULL;
   }
   else  {
-    afterHead->prevData = NULL;
+    afterHead->setLeft(NULL);
   }
   head = afterHead;
-  return returnChar;
   size--;
+  return returnNode;
 }
 
-char Queue::peek() {
+Node* Queue::peek() {
   if(head == NULL) {
-    return '~';
+    return NULL;
   }
-  return head->value;
+  return head;
 }
 
 int Queue::length() {

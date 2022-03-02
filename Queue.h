@@ -1,28 +1,23 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 #include <iostream>
+#include "Node.h"
 
 using namespace std;
 
 class Queue {
-  struct data;
  public:
   Queue();
   ~Queue();
-  void destroy(data* current);
-  void enqueue(char newValue);
-  char dequeue();
-  char peek();
+  void enqueue(Node* newNode);
+  Node* dequeue();
+  Node* peek();
   int length();
  private:
-  struct data {
-    char value;
-    data* prevData;
-    data* nextData;
-  };
+  void destroy(Node* current);
   int size;
-  data* head;
-  data* tail;
+  Node* head;
+  Node* tail;
 };
 
 #endif

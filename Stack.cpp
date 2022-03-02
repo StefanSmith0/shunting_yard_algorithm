@@ -24,49 +24,30 @@ void Stack::destroy(Node* current) {
   current = NULL;
 }
 
-char Stack::pop() {
-  if(head == NULL) {
-    return '~';
-  }
-  char returnChar = head->getValue();
-  Node* afterHead = head->getLeft();
-  delete head;
-  head = afterHead;
-  return returnChar;
-  size--;
-}
-
-void Stack::push(char newValue) {
-  Node* newNode = new Node(newValue);
-  Node* tempHead = head;
-  head = newNode;
-  newNode->setLeft(tempHead);
-  size++;
-}
-
-
-Node* Stack::popNode() {
+Node* Stack::pop() {
   if(head == NULL) {
     return NULL;
   }
   Node* returnNode = head;
-  head = head->getLeft();
+  Node* afterHead = head->getLeft();
+  head = afterHead;
+  returnNode->setLeft(NULL);
   return returnNode;
   size--;
 }
 
-void Stack::pushNode(Node* newNode) {
+void Stack::push(Node* newNode) {
   Node* tempHead = head;
   head = newNode;
   newNode->setLeft(tempHead);
   size++;
 }
 
-char Stack::peek() {
+Node* Stack::peek() {
   if(head == NULL) {
-    return '~';
+    return NULL;
   }
-  return head->getValue();
+  return head;
 }
 
 int Stack::length() {
