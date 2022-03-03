@@ -82,7 +82,7 @@ void shuntYard(char* charArr) { //Shunting algorithm, turns infix into postfix
 	}
       }
       else {
-	while(stack->peek() != NULL && precedence(newNode) <= precedence(stack->peek())) {
+	while(precedence(newNode) <= precedence(stack->peek())) {
 	  queue->enqueue(stack->pop());
 	}
 	stack->push(newNode);
@@ -93,14 +93,14 @@ void shuntYard(char* charArr) { //Shunting algorithm, turns infix into postfix
     queue->enqueue(stack->pop());
   }
   char output[inputSize];
-  int i = 0;
-  while(queue->peek() != NULL) {
+  int outI = 0;
+  for(int i = 0; queue->peek() != NULL; i++) {
     output[i] = queue->dequeue()->getValue();
-    i++;
+    outI = i;
   }
   delete stack;
   delete queue;
-  strcpy(charArr, output);
+  strncpy(charArr, output, (outI + 1));
 }
 
 void makeTree(char input[]) { //Creates a binary tree for postfix
