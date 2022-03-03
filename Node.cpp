@@ -5,6 +5,7 @@ using namespace std;
 
 Node::Node(char newValue) {
   value = newValue;
+  next = NULL;
   left = NULL;
   right = NULL;
 }
@@ -18,6 +19,14 @@ char Node::getValue() {
 
 void Node::setValue(char newValue) {
   value = newValue;
+}
+
+Node* Node::getNext() {
+  return next;
+}
+
+void Node::setNext(Node* newNext) {
+  next = newNext;
 }
 
 Node* Node::getLeft() {

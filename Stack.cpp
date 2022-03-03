@@ -17,8 +17,8 @@ void Stack::destroy(Node* current) {
   if(current == NULL) {
     return;
   }
-  else if(current->getLeft() != NULL) {
-    destroy(current->getLeft());
+  else if(current->getNext() != NULL) {
+    destroy(current->getNext());
   }
   delete current;
   current = NULL;
@@ -29,9 +29,9 @@ Node* Stack::pop() {
     return NULL;
   }
   Node* returnNode = head;
-  Node* afterHead = head->getLeft();
+  Node* afterHead = head->getNext();
   head = afterHead;
-  returnNode->setLeft(NULL);
+  returnNode->setNext(NULL);
   return returnNode;
   size--;
 }
@@ -39,7 +39,7 @@ Node* Stack::pop() {
 void Stack::push(Node* newNode) {
   Node* tempHead = head;
   head = newNode;
-  newNode->setLeft(tempHead);
+  newNode->setNext(tempHead);
   size++;
 }
 

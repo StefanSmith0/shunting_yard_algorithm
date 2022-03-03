@@ -6,16 +6,19 @@ using namespace std;
 
 class Node {
 public:
-  Node(char);
-  ~Node();
-  char getValue();
-  void setValue(char);
+  Node(char); //Constructor
+  ~Node(); //Destructor
+  char getValue(); //Sets and gets
+  void setValue(char newValue);
+  Node* getNext();
+  void setNext(Node* newNext);
   Node* getLeft();
-  void setLeft(Node*);
+  void setLeft(Node* newLeft);
   Node* getRight();
-  void setRight(Node*);
+  void setRight(Node* newRight);
 private:
   char value;
+  Node* next;
   Node* left;
   Node* right;
 };
